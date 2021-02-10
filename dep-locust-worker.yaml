@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    role: locust-worker
+  name: locust-worker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      role: locust-worker
+  template:
+    metadata:
+      labels:
+        role: locust-worker
+    spec:
+      containers:
+      - image: localhost:32000/mqlocust
+        imagePullPolicy: IfNotPresent
+        name: locust-worker
+        args: ["-f", "/mnt/locust/locustfile.py", "--worker", "--master-host", "locust-master"]
+        volumeMounts:
+          - mountPath: /mnt/locust
+            name: locust-files
+      volumes:
+      - name: locust-files
+        hostPath:
+          path: /home/matt/dev/locust-kubernetes/resources/locust-files/dummy

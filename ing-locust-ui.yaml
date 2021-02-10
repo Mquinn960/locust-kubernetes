@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: locust-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+        - backend:
+            service: 
+              name: locust-master
+              port: 
+                number: 8089
+          path: /
+          pathType: Prefix
