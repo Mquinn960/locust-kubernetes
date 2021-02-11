@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    role: mock-server
+  name: mock-server
+spec:
+  ports:
+  - port: 1080
+    targetPort: 1080
+    name: api
+  selector:
+    role: mock-server

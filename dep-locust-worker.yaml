@@ -27,4 +27,4 @@ spec:
       volumes:
       - name: locust-files
         hostPath:
-          path: /home/matt/dev/locust-kubernetes/resources/locust-files/dummy
+          path: /home/matt/dev/locust-kubernetes/resources/locust-files/foobar

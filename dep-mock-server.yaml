@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    role: mock-server
+  name: mock-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: mock-server
+  template:
+    metadata:
+      labels:
+        role: mock-server
+    spec:
+      containers:
+      - image: localhost:32000/mqmock
+        imagePullPolicy: IfNotPresent
+        name: mock-server
+        env:
+        - name: MOCKSERVER_PROPERTY_FILE
+          value: "/config/mockserver.properties"
+        - name: MOCKSERVER_INITIALIZATION_JSON_PATH
+          value: "/config/initializerJson.json"
+        volumeMounts:
+          - mountPath: /config
+            name: initaliser
+        ports:
+        - containerPort: 1080
+      volumes:
+      - name: initaliser
+        hostPath:
+          path: /home/matt/dev/locust-docker-compose/build/mockserver/resources
+  
