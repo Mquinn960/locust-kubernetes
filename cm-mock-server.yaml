@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mock-server-config
+data:
+  MOCKSERVER_PROPERTY_FILE: "/config/mockserver.properties"
+  MOCKSERVER_INITIALIZATION_JSON_PATH: "/config/initializerJson.json"

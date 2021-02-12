@@ -22,9 +22,15 @@ spec:
         name: mock-server
         env:
         - name: MOCKSERVER_PROPERTY_FILE
-          value: "/config/mockserver.properties"
+          valueFrom:
+            configMapKeyRef:
+              name: mock-server-config
+              key: MOCKSERVER_PROPERTY_FILE
         - name: MOCKSERVER_INITIALIZATION_JSON_PATH
-          value: "/config/initializerJson.json"
+          valueFrom:
+            configMapKeyRef:
+              name: mock-server-config
+              key: MOCKSERVER_INITIALIZATION_JSON_PATH
         volumeMounts:
           - mountPath: /config
             name: initaliser
