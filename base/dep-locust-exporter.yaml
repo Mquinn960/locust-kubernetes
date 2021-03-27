@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    role: locust-exporter
+  name: locust-exporter
+spec:
+  selector:
+    matchLabels:
+      role: locust-exporter
+  template:
+    metadata:
+      labels:
+        role: locust-exporter
+    spec:
+      containers:
+      - image: containersol/locust_exporter
+        imagePullPolicy: IfNotPresent
+        name: locust-exporter
+        ports:
+        - containerPort: 9646
+        env:
+          - name: LOCUST_EXPORTER_URI
+            value: "http://locust-master:8089"

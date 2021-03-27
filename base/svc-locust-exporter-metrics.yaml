@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    role: locust-exporter
+  name: locust-exporter
+spec:
+  ports:
+  - port: 9646
+    targetPort: 9646
+    name: metrics
+  selector:
+    role: locust-exporter

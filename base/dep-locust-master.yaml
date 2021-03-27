@@ -20,7 +20,7 @@ spec:
       - image: localhost:32000/mqlocust
         imagePullPolicy: IfNotPresent
         name: locust-master
-        args: ["-f", "/mnt/locust/locustfile.py", "--master", "-H", "http://locust-master:8089"]
+        args: ["-f", "/mnt/locust/locustfile.py", "--master", "-H", "http://mock-server:1080"]
         volumeMounts:
           - mountPath: /mnt/locust
             name: locust-files

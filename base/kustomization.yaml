@@ -1,0 +1,12 @@
+   commonLabels:
+     app: locust
+   resources:
+   - dep-locust-master.yaml
+   - dep-locust-worker.yaml
+   - dep-mock-server.yaml
+   - dep-locust-exporter.yaml
+   - ing-locust-ui.yaml
+   - svc-locust-service.yaml
+   - svc-mock-server-service.yaml
+   - svc-locust-exporter-metrics.yaml
+   - cm-mock-server.yaml

@@ -1,0 +1,8 @@
+commonLabels:
+  variant: prod
+commonAnnotations:
+  note: This is a dev cluster
+bases:
+  - ../../base
+patches:
+  - worker_replicas.yaml

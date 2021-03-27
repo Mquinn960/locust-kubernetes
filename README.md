@@ -45,6 +45,10 @@ For example:
 The deployment can also be managed from ```kubectl``` in
 the standard manner.
 
+## Kustomize
+
+kustomize overlays/dev | kubectl apply -f -
+
 ## Disclaimer
 
 This setup is not intended for production usage, and care
